@@ -26,7 +26,6 @@ server.on( "request", ( req, res ) => {
     const pathSansPrefix = req.url.match( /^\/api(\/.*)/ )[1];
     forward( req, res, HTTP_PORT_API, pathSansPrefix );
   } else {
-    res.end( "404" );
-    // forward( req, res, HTTP_PORT_FRONTEND );
+    forward( req, res, HTTP_PORT_FRONTEND );
   }
 } );

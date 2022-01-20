@@ -1,0 +1,34 @@
+{
+  "name": "gateway",
+  "repository": "htw-kbe-jneidel/gateway",
+  "version": "0.0.1",
+  "author": {
+    "name": "Jonathan Neidel",
+    "email": "git@jneidel.com",
+    "url": "https://jneidel.com"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "start": "nodemon dist/app.js --ignore src/ --ignore test/ --trace-sync-io",
+    "test": "jest --coverage",
+    "build": "npm run build-ts",
+    "build-ts": "tsc",
+    "build-webpack": "webpack",
+    "watch": "concurrently -k -n \"🔨,🚀\" \"npm run watch-build\" \"npm run watch-test\" --prefix name",
+    "watch-build": "tsc -w",
+    "watch-test": "jest --watch",
+    "start-prod": "concurrently -n \"gateway\" \"node dist/app.js\" --prefix name",
+    "lint": "eslint --fix -c ~/.config/eslint/eslintrc-ts --ext .ts --parser-options \"{ 'ecmaVersion': 10, 'ecmaFeatures': { 'impliedStrict': true }, project: ./tsconfig.json }\" src"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/**/*.test.ts"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    }
+  }
+}

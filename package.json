@@ -22,9 +22,6 @@
     "start-prod": "concurrently -n \"gateway\" \"node app.js\" --prefix name",
     "lint": "eslint --fix -c ~/.config/eslint/eslintrc-ts --ext .ts --parser-options \"{ 'ecmaVersion': 10, 'ecmaFeatures': { 'impliedStrict': true }, project: ./tsconfig.json }\" src"
   },
-  "devDependencies": {
-    "concurrently": "^7.0.0"
-  },
   "jest": {
     "testEnvironment": "node",
     "testMatch": [

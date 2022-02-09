@@ -22,6 +22,7 @@ function forward(req, res, port, path=req.url) {
 }
 
 server.on( "request", ( req, res ) => {
+  console.log( req.url )
   if ( req.url.match( /^\/api\// ) ) {
     const pathSansPrefix = req.url.match( /^\/api(\/.*)/ )[1];
     forward( req, res, HTTP_PORT_API, pathSansPrefix );
